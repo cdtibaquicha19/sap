@@ -1,12 +1,18 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-
 # Create your views here.
+from personas.models import Persona, Domicilio
+
 def bienvenido(request):
-    return HttpResponse("hola mundo desde django ")
+    personas = {
+        'numerototal':Persona.objects.count(),
+        'personas' : Persona.objects.order_by('id')
+    }
+    return render(request, 'bienvenido.html', personas)
 
-def despedirce(request):
-    return HttpResponse("despedida desde django ")
-
-def contacto(request):
-    return HttpResponse("3175217930 - cdtibaquicha19@gmail.com")
+def domicilio(request):
+    domicilios = {
+        'numerototal': Domicilio.objects.count(),
+        'domicilios': Domicilio.objects.order_by('id')
+    }
+    return render(request, 'domicilios.html', domicilios)

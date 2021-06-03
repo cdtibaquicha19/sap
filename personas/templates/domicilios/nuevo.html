@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo domicilio</title>
+</head>
+<body>
+<form method="POST">
+    <h2>Agregar domicilio</h2>
+  <table>
+      {{formDomicilio}}
+  </table>
+
+    <button type="submit">Agregar </button>
+    {% csrf_token %}
+</form>
+
+<a href="{% url 'domicilio' %}"> Regresar al domicilio </a>
+</body>
+</html>
